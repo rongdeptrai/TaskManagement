@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { connect } from "react-redux";
+import Header from "./components/Header/Header";
+import Board from "./containers/Board";
+import { history } from "./_helpers";
+import { alertActions } from "./actions";
+import { PrivateRoute } from "./containers/PrivateRoute";
+import { Login } from "./components/Login";
 
-function App() {
+function App({ alert, clearAlerts }) {
+  useEffect(() => {
+    const unlisten = history.listen(() => clearAlerts());
+    return () => unlisten();
+  }, [clearAlerts]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {alert.message && (
+        <div className={`alert ${alert.type}`}>{alert.message}</div>
+      )}
+      <Router history={history}>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route
+            path='/'
+            element={
+              <PrivateRoute>
+                <Header />
+                ,<Board />
+              </PrivateRoute>
+            }
+          />
+          <Route path='*' element={<Navigate to='/' />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
 
-export default App;
+function mapState(state) {
+  const { alert } = state;
+  return { alert };
+}
+
+const actionCreators = {
+  clearAlerts: alertActions.clear,
+};
+
+const connectedApp = connect(mapState, actionCreators)(App);
+export { connectedApp as App };

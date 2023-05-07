@@ -1,0 +1,30 @@
+.header{
+    padding: 0.7rem;
+}
+.HeaderContainer{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.icon-list-check{
+    color: blue;
+    
+}
+.project_name{
+    display: flex;
+    align-items: center;
+    font-weight:495;
+    font-size: large;
+    margin-bottom: 0.5rem;
+}
+.icon-user{
+    color: gray;
+
+}
+
+.user_name{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}

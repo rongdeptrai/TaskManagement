@@ -1,0 +1,61 @@
+.right-component {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color:transparent; /* Use an rgba color with low opacity to create a semi-transparent overlay */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  .right-header{
+    height: 70px;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    background-color: white;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  .right-component-content {
+    width: 30%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .content {
+    padding: 20px;
+
+  }
+  .content-header{
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+  .task-info{
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 25px;
+    border-radius: 5px;
+    grid-gap: 13px;
+  }
+ .todo-info{
+    margin-top: 65px;
+ }
+ .todo-list{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+ }
+.checkBoxTodo{
+  margin-top: 2rem;
+  padding-left: 5rem;
+  margin-bottom: 2rem;
+}
+  
+  
+  
