@@ -1,5 +1,5 @@
 import { authHeader } from "../_helpers";
-const API_BASE_URL = "https://localhost:7265/api";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 export const userService = {
   login,
   logout,

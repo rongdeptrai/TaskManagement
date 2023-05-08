@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes";
+import * as types from "../_constants/ActionTypes";
 
 const stateHistoryEnhancer = (reducer) => {
   const initialState = {

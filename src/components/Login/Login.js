@@ -7,11 +7,9 @@ import { useNavigate } from "react-router-dom";
 function Login({ loggingIn, login, logout }) {
   const authUser = localStorage.getItem("user");
   const navigate = useNavigate();
-
   useEffect(() => {
     // redirect to home if already logged in
-    if (authUser) navigate("/board");
-    console.log(authUser);
+    if (loggingIn) navigate("/board");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 

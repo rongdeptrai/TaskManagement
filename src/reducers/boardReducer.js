@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes";
+import * as types from "../_constants/ActionTypes";
 import * as BoardHelper from "../helpers/boardHelper";
 import { randomId } from "../helpers/utils";
 import mockData from "../helpers/mockData";
