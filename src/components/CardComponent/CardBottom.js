@@ -3,7 +3,6 @@ import IconButton from "@mui/material/IconButton";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import Grid from "@mui/material/Grid";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import FormatListNumberedRtlOutlinedIcon from "@mui/icons-material/FormatListNumberedRtlOutlined";
@@ -11,14 +10,24 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const CardBottom = (props) => {
   return (
-    <Grid
-      container
+    <div
       style={{
         marginTop: "30px",
         paddingBottom: "15px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
-      <Grid item sm={6} xs={12}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          flex: 1,
+        }}
+      >
         <IconButton
           style={{
             border: "1px dashed black",
@@ -37,16 +46,13 @@ const CardBottom = (props) => {
         >
           <CalendarTodayOutlinedIcon style={{ fontSize: "16px" }} />
         </IconButton>
-      </Grid>
-      <Grid
-        item
-        sm={6}
-        xs={12}
+      </div>
+      <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "flex-end",
-          fontSize: "16px",
+          flex: 1,
         }}
       >
         <IconButton
@@ -89,8 +95,8 @@ const CardBottom = (props) => {
             <ArrowRightOutlinedIcon />
           )}
         </IconButton>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 export default CardBottom;

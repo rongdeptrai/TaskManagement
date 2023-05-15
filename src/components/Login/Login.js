@@ -3,16 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { history } from "../../_helpers";
 import { userActions } from "../../actions";
-import { useNavigate } from "react-router-dom";
-function Login({ loggingIn, login, logout }) {
-  const authUser = localStorage.getItem("user");
-  const navigate = useNavigate();
-  useEffect(() => {
-    // redirect to home if already logged in
-    if (loggingIn) navigate("/board");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+/* import { useNavigate } from "react-router-dom"; */
+const authUser = localStorage.getItem("user");
 
+function Login({ loggingIn, login, logout, loadCard, card }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -32,10 +26,10 @@ function Login({ loggingIn, login, logout }) {
 
   return (
     <div className='col-md-6 col-md-offset-3'>
-      <h2>Login</h2>
+      <h2>Đăng nhập</h2>
       <form name='form' onSubmit={handleSubmit}>
         <div className={"form-group"}>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor='username'>Tên đăng nhập</label>
           <input
             type='text'
             className='form-control'
@@ -45,7 +39,7 @@ function Login({ loggingIn, login, logout }) {
           />
         </div>
         <div className={"form-group"}>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Mật khẩu</label>
           <input
             type='password'
             className='form-control'
@@ -55,7 +49,7 @@ function Login({ loggingIn, login, logout }) {
           />
         </div>
         <div className='form-group'>
-          <button className='btn btn-primary'>Login</button>
+          <button className='btn btn-primary'>Đăng nhập</button>
           {loggingIn && <span>Vui lòng đợi</span>}
         </div>
       </form>

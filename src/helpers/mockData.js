@@ -8,6 +8,7 @@ const getCard = (
   deadline,
   comment,
   attachment,
+  seq,
 ) => ({
   id: randomId(),
   content,
@@ -17,6 +18,7 @@ const getCard = (
   deadline,
   comment,
   attachment,
+  seq,
   todoLists: [],
 });
 
@@ -37,17 +39,18 @@ const getListProps = (seq, status) => ({
 export default [
   {
     id: randomId(),
-    name: "To do",
+    name: "Cơ hội",
     cards: [
       {
         ...getCard(
-          "Integrate frontend with backend",
-          "trung bình",
+          "Cơ hội",
+          "Trung bình",
           "3",
-          "Le Hoang Long",
+          "Lê Hoàng Long",
           new Date().toISOString(),
           "Đi mua cháo",
           "abc.file",
+          1,
         ),
         todoLists: [
           getTodoList(
@@ -60,28 +63,222 @@ export default [
           getTodoList("đi mua cháo2", 2, false),
         ],
       },
-      getCard("Create integration tests", ""),
-      getCard("Setup production environment", ""),
-      getCard("Deploy to production", ""),
+      {
+        ...getCard(
+          "Mua máy chiếu",
+          "Khẩn cấp",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua máy chiếu",
+          "abc.file",
+          2,
+        ),
+        todoLists: [
+          getTodoList(
+            "Hoàn thành trước 23/04",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
     ],
   },
   {
     id: randomId(),
-    name: "In progress",
+    name: "Báo giá",
     cards: [
-      getCard("Create unit tests", ""),
-      getCard("Implement API services", ""),
-      getCard("Mock frontend", ""),
+      {
+        ...getCard(
+          "Cơ hội abcdef",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua cháo",
+          "abc.file",
+          4,
+        ),
+        todoLists: [
+          getTodoList(
+            "đi mua cháo",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("đi mua cháo2", 2, false),
+        ],
+      },
+      {
+        ...getCard(
+          "Mua  tivi",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua máy chiếu",
+          "abc.file",
+          5,
+        ),
+        todoLists: [
+          getTodoList(
+            "Hoàn thành trước 23/04",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
+      {
+        ...getCard(
+          "Mua  tủ lạnh",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua máy chiếu",
+          "abc.file",
+          6,
+        ),
+        todoLists: [
+          getTodoList(
+            "Hoàn thành trước 23/04",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
     ],
   },
   {
     id: randomId(),
-    name: "Ready for test",
-    cards: [getCard("Implement use cases", ""), getCard("Design API", "")],
+    name: "Đơn hàng",
+    cards: [
+      {
+        ...getCard(
+          "Đi mua vật tư",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Mua đồ dùng văn phòng",
+          "abc.file",
+          7,
+        ),
+        todoLists: [
+          getTodoList(
+            "Mua bút lông",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("Mua thước", 2, false),
+        ],
+      },
+      {
+        ...getCard(
+          "Cơ hội 456",
+          "Trung bình",
+          "2",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua máy chiếu",
+          "abc.file",
+          8,
+        ),
+        todoLists: [
+          getTodoList(
+            "Thực hiện ngay",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, false),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
+      {
+        ...getCard(
+          "Kế hoạch 567",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Lên kế hoạch companytrip",
+          "abc.file",
+          9,
+        ),
+        todoLists: [
+          getTodoList(
+            "triển khai",
+            1,
+            true,
+            getListProps(1, false),
+            getListProps(2, false),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
+    ],
   },
   {
     id: randomId(),
-    name: "Done",
-    cards: [getCard("Design database model", ""), getCard("Create models", "")],
+    name: "Hoàn Thành",
+    cards: [
+      {
+        ...getCard(
+          "Ký hợp đồng ABC",
+          "Trung bình",
+          "3",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Mua đồ dùng văn phòng",
+          "abc.file",
+          10,
+        ),
+        todoLists: [
+          getTodoList(
+            "Mua bút lông",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, true),
+          ),
+          getTodoList("Mua thước", 2, false),
+        ],
+      },
+      {
+        ...getCard(
+          "Tổ chức họp công ty",
+          "Trung bình",
+          "2",
+          "Lê Hoàng Long",
+          new Date().toISOString(),
+          "Đi mua máy chiếu",
+          "abc.file",
+          11,
+        ),
+        todoLists: [
+          getTodoList(
+            "Thực hiện ngay",
+            1,
+            true,
+            getListProps(1, true),
+            getListProps(2, true),
+          ),
+          getTodoList("Báo giá", 2, false),
+        ],
+      },
+    ],
   },
 ];

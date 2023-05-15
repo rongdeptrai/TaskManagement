@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -8,6 +8,7 @@ import "../styles/Header.css";
 import Grid from "@mui/material/Grid";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import { cardActions } from "../../actions";
 
 const iconStyle = {
   fontSize: "2rem", // Set font size
@@ -17,7 +18,13 @@ const iconStyleUser = {
   fontSize: "1.7rem", // Set font size
   marginRight: "8px", // Add some margin to the right
 };
-const Header = () => {
+const Header = (props) => {
+  /* useEffect(() => {
+    props.getAllCard();
+  }, []); */
+
+  /*   console.log(listCard.currentState.listTask); */
+
   return (
     <div className='header'>
       <div className='HeaderContainer'>
@@ -38,4 +45,16 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
+
+function mapState(state) {
+  const { listCard } = state;
+  const { list } = listCard;
+  return { list, listCard };
+}
+
+const actionCreators = {
+  getAllCard: cardActions.getAllCard,
+};
+
+const connectedHeader = connect(mapState, actionCreators)(Header);
+export default connectedHeader;

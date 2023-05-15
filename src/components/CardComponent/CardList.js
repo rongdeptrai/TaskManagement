@@ -30,7 +30,7 @@ const CardList = (props) => {
       {props.isFirstList && (
         <AddForm
           onConfirm={props.onAddCard}
-          placeholder='+ Add new card'
+          placeholder='+ Thêm công việc'
           focusPlaceholder='Enter card content'
           darkFont
           width='auto'

@@ -22,26 +22,24 @@ function App({ alert, clearAlerts }) {
   }, [clearAlerts]);
 
   return (
-    <div>
+    <Router history={history}>
       {alert.message && (
         <div className={`alert ${alert.type}`}>{alert.message}</div>
       )}
-      <Router history={history}>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route
-            path='/'
-            element={
-              <PrivateRoute>
-                <Header />
-                ,<Board />
-              </PrivateRoute>
-            }
-          />
-          <Route path='*' element={<Navigate to='/' />} />
-        </Routes>
-      </Router>
-    </div>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Header />
+              <Board />
+            </PrivateRoute>
+          }
+        />
+        <Route path='*' element={<Navigate to='/' />} />
+      </Routes>
+    </Router>
   );
 }
 

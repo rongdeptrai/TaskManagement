@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import AddForm from "../components/Action/AddForm";
@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { BoardContainer } from "../components/styles/BoardContainer.js";
 import CardList from "../components/CardComponent/CardList";
+import { cardActions } from "../actions";
 
 import {
   addCard,
@@ -23,6 +24,19 @@ import {
 } from "../actions/boardActions";
 
 const Board = (props) => {
+  const [listTask, setListTask] = useState(
+    props.listCard.currentState.listTask
+      ? props.listCard.currentState.listTask
+      : [],
+  );
+
+  useEffect(() => {
+    if (props.listCard?.currentState?.listTask) {
+      setListTask(props.listCard.currentState.listTask);
+    }
+  }, [props.listCard.currentState.listTask]);
+  console.log(props.listCard);
+
   const onDragEnd = (result) => {
     const { source, destination, draggableId } = result;
     // dropped outside the list
@@ -44,9 +58,10 @@ const Board = (props) => {
   };
   return (
     <div className='board'>
-      <BoardContainer countColumns={props.lists.length + 1}>
+      {/*  <BoardContainer countColumns={props.lists ? props.lists.length + 1 : 1}> */}
+      <BoardContainer countColumns={listTask ? listTask.length + 1 : 1}>
         <DragDropContext onDragEnd={onDragEnd}>
-          {props.lists.map((list, listIndex) => (
+          {listTask.map((list, listIndex) => (
             <CardList
               key={list.id}
               droppableId={list.id}
@@ -75,8 +90,8 @@ const Board = (props) => {
         </DragDropContext>
         <AddForm
           onConfirm={props.onAddList}
-          placeholder='+ Add new list'
-          focusPlaceholder='Enter list title'
+          placeholder='+ Thêm danh sách task'
+          focusPlaceholder='Nhập tên danh sách'
           maxWidth='220px'
         />
       </BoardContainer>
@@ -114,8 +129,10 @@ const mapDispatchToProps = (dispatch) => ({
   onDuplicateCard: bindActionCreators(duplicateCard, dispatch),
 });
 const mapStateToProps = (state) => ({
-  lists: state.board.currentState.lists,
+  /* lists: state.board.currentState.lists, */
   search: state.search,
+  listCard: state.listCard,
+  ListCard: state.listCard.currentState.listTask,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

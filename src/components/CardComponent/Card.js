@@ -33,6 +33,7 @@ const Card = ({
     }
   }, [editMode]);
   const [cardContent, setCardContent] = useState(card.content);
+  const [cardSeq, setCardSeq] = useState(card.seq);
   const [cardId, setCardCId] = useState(card.id);
   const [cardPriority, setCardPriority] = useState(card.priority);
   const [cardTag, setCardTag] = useState(card.tag);
@@ -118,11 +119,19 @@ const Card = ({
           >
             <Grid>
               <Grid item xs={12}>
-                <span>cardiD. {cardContent}</span>
+                <span>
+                  {cardSeq}. {cardContent}
+                </span>
               </Grid>
               <Grid container style={{ marginTop: "15px" }}>
                 <Grid item sm={6} xs={12}>
-                  <ButtonFlag>
+                  <ButtonFlag
+                    style={{
+                      backgroundColor:
+                        cardPriority === "Khẩn cấp" ? "red" : undefined,
+                      marginLeft: "10px",
+                    }}
+                  >
                     <FlagRoundedIcon /> <span>{cardPriority}</span>
                   </ButtonFlag>
                 </Grid>

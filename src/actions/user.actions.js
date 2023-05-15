@@ -19,6 +19,7 @@ function login(username, password) {
       (user) => {
         dispatch(success(user));
         history.push("/");
+        window.location.reload();
       },
       (error) => {
         dispatch(failure(error.toString()));
